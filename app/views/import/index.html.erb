@@ -1,0 +1,68 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Import Building</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Reference</th>
+      <th>Address</th>
+      <th>Zip Code</th>
+      <th>City</th>
+      <th>Country</th>
+      <th>Manager Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buildings.each do |building| %>
+    <tr>
+      <td><%= building.reference %></td>
+      <td><%= building.address %></td>
+      <td><%= building.zip_code %></td>
+      <td><%= building.city %></td>
+      <td><%= building.country %></td>
+      <td><%= building.manager_name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= form_tag csv_upload_import_index_path, multipart: true do %>
+<%= file_field_tag :building_file %>
+<%= submit_tag "Import Building" %>
+<% end %>
+<br>
+
+<h2>Import Person</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Reference</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Home Phone Number</th>
+      <th>Mobile Phone Number</th>
+      <th>Email</th>
+      <th>address</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @persons.each do |person| %>
+    <tr>
+      <td><%= person.reference %></td>
+      <td><%= person.firstname %></td>
+      <td><%= person.lastname %></td>
+      <td><%= person.home_phone_number %></td>
+      <td><%= person.mobile_phone_number %></td>
+      <td><%= person.email %></td>
+      <td><%= person.address %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= form_tag csv_upload_import_index_path, multipart: true do %>
+<%= file_field_tag :person_file %>
+<%= submit_tag "Import Person" %>
+<% end %>
